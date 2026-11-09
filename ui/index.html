@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B22 UFU · {{PLATFORM}} Lab</title>
+  <link rel="stylesheet" href="/assets/lab.css">
+  <script src="/assets/lab.js" defer></script>
+</head>
+<body data-platform="{{KEY}}">
+  <header class="topbar"><div class="wrap top-inner">
+    <a class="brand" href="/" aria-label="Trang chủ"><span class="brand-mark">B22</span><span>UPLOAD SECURITY <small>EXPERIMENT LAB</small></span></a>
+    <nav aria-label="Nền tảng"><a href="http://127.0.0.1:18081/" {{PHP_CURRENT}}>PHP / Apache</a><a href="http://127.0.0.1:18082/" {{NODE_CURRENT}}>Node.js / Express</a></nav>
+    <span class="local">LOCAL ONLY</span>
+  </div></header>
+  <main class="wrap">
+    <section class="intro"><div><p class="eyebrow">BẢO MẬT ỨNG DỤNG WEB / NT213</p><h1>Tải tệp. Quan sát. Đối chiếu.</h1><p>Thực nghiệm upload không an toàn và phòng vệ nhiều lớp trên <strong>{{PLATFORM}}</strong>.</p></div><span class="platform-badge">{{PLATFORM}}<small>HTTP · multipart/form-data</small></span></section>
+    <aside class="notice"><strong>Môi trường cố ý có lỗ hổng.</strong> Chỉ dùng dữ liệu thử trên máy cục bộ. HTTP thành công không đồng nghĩa tệp an toàn; marker HTML không chứng minh XSS.</aside>
+    <div class="workspace">
+      <section class="panel" aria-labelledby="upload-title">
+        <div class="panel-heading"><span class="step">01</span><div><h2 id="upload-title">Thiết lập thử nghiệm</h2><p>Chọn chính sách và dữ liệu gửi lên.</p></div></div>
+        <form id="upload-form">
+          <fieldset><legend>Chế độ xử lý</legend><div class="modes">
+            <label><input type="radio" name="mode" value="defended" checked><span><strong>Có phòng vệ</strong><small>Kiểm tra & tái mã hóa ảnh</small></span></label>
+            <label><input type="radio" name="mode" value="vulnerable"><span><strong>Có lỗ hổng</strong><small>Quan sát kiểm tra không đầy đủ</small></span></label>
+          </div></fieldset>
+          <div id="scenario-field" hidden><label for="scenario">Kịch bản thử nghiệm</label><select id="scenario"></select></div>
+          <p id="policy" class="policy"></p>
+          <label for="file">Tệp đầu vào</label>
+          <div class="dropzone" id="dropzone"><span class="upload-icon" aria-hidden="true">↑</span><strong>Chọn tệp hoặc kéo thả vào đây</strong><span>Mọi loại tệp đều có thể gửi để kiểm tra chính sách phía máy chủ.</span><input id="file" type="file" aria-describedby="file-info"></div>
+          <p id="file-info" class="file-info">Chưa chọn tệp.</p>
+          <fieldset class="samples"><legend>Hoặc dùng mẫu demo vô hại</legend><div class="sample-buttons"><button type="button" data-sample="image">Ảnh PNG hợp lệ</button><button type="button" data-sample="fake">Tệp giả ảnh</button><button type="button" data-sample="marker">PHP marker</button><button type="button" data-sample="polyglot">Ảnh + marker</button><button type="button" data-sample="html">HTML marker</button></div><p id="sample-help">Mẫu được tạo ngay trong trình duyệt, không chạy lệnh hệ điều hành.</p></fieldset>
+          <details><summary>Tùy chỉnh tên và Content-Type gửi lên</summary><div class="advanced"><label for="filename">Tên tệp gửi lên</label><input id="filename" type="text" maxlength="240" placeholder="Để trống để dùng tên tệp đã chọn"><label for="mime">Content-Type của phần tệp</label><input id="mime" type="text" maxlength="120" placeholder="Ví dụ: image/png"><p>Đây là dữ liệu do client khai báo, không phải kết quả nhận diện nội dung.</p></div></details>
+          <div class="endpoint"><span>POST</span><code id="endpoint"></code></div>
+          <div class="actions"><button id="submit" class="primary" type="submit">Gửi tệp & kiểm tra <span aria-hidden="true">→</span></button><button id="reset" type="button">Đặt lại</button></div>
+          <p id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="panel results" aria-labelledby="result-title">
+        <div class="panel-heading"><span class="step">02</span><div><h2 id="result-title">Kết quả từ máy chủ</h2><p>Phản hồi thật, không phải kết quả mô phỏng.</p></div><span id="status" class="status" role="status">Chưa gửi</span></div>
+        <div class="result-body">
+          <div id="empty" class="empty"><span aria-hidden="true">{ }</span><h3>Sẵn sàng quan sát</h3><p>Chọn ảnh PNG hợp lệ và nhấn gửi để bắt đầu.<br>Sau đó thử tệp giả ảnh để đối chiếu.</p></div>
+          <div id="result" hidden><dl class="metrics"><div><dt>HTTP</dt><dd id="http-code">—</dd></div><div><dt>Thời gian</dt><dd id="duration">—</dd></div><div><dt>Dữ liệu gửi</dt><dd id="sent-size">—</dd></div></dl><p id="interpretation" class="interpretation"></p><dl id="facts" class="facts"></dl><div id="file-actions" class="actions"></div><div class="response-heading"><h3>Nội dung phản hồi</h3><button id="save-result" type="button">Lưu JSON</button></div><pre id="response" tabindex="0"></pre><details><summary>Header phản hồi upload</summary><pre id="headers" tabindex="0"></pre></details><p class="muted">Thời gian hiển thị do trình duyệt đo, không phải benchmark. Liên kết mở tệp chỉ xuất hiện khi đường dẫn phù hợp.</p></div>
+        </div>
+      </section>
+    </div>
+    <section class="panel history-panel"><div class="panel-heading"><span class="step">03</span><div><h2>Lịch sử phiên demo</h2><p>Tối đa 10 lần gửi gần nhất; làm mới trang sẽ xóa lịch sử.</p></div><button id="clear-history" type="button">Xóa lịch sử</button></div><div class="table-scroll"><table><thead><tr><th>Thời điểm</th><th>Chế độ</th><th>Tên tệp gửi</th><th>HTTP</th><th>Thời gian</th></tr></thead><tbody id="history"><tr><td colspan="5">Chưa có yêu cầu nào.</td></tr></tbody></table></div></section>
+    <section class="guide" aria-labelledby="guide-title"><div><p class="eyebrow">KỊCH BẢN TRÌNH DIỄN</p><h2 id="guide-title">Một đầu vào, hai chính sách.</h2><p>Quan sát cả trạng thái HTTP và nội dung phản hồi trước khi kết luận.</p></div><ol><li><strong>Thử ảnh hợp lệ</strong><span>Giữ chế độ phòng vệ, chọn PNG mẫu và gửi. Ảnh được xử lý rồi lưu ngoài vùng public.</span></li><li><strong>Đối chiếu tệp giả ảnh</strong><span>Gửi cùng mẫu ở hai chế độ. Với PHP, chọn kịch bản Content-Type; với Node, chọn public upload.</span></li><li><strong>Quan sát marker</strong><span>Ảnh + marker giúp minh họa tái mã hóa. marker_present = false chỉ xác nhận không còn chuỗi marker kiểm thử.</span></li></ol></section>
+    <footer>B22 · Unrestricted File Upload Lab <span>Không có xác thực/phân quyền. Không dùng làm ứng dụng production.</span></footer>
+  </main>
+</body>
+</html>

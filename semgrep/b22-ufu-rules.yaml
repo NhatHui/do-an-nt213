@@ -1,0 +1,16 @@
+rules:
+  - id: b22-php-unrestricted-move-upload
+    message: Uploaded file is moved into a webroot path without an allowlist policy.
+    severity: WARNING
+    languages: [php]
+    patterns:
+      - pattern: move_uploaded_file(..., $DEST)
+      - pattern-inside: |
+          $DEST = __DIR__ . '/uploads/' . $NAME;
+          ...
+  - id: b22-node-multer-webroot
+    message: Multer destination is inside a publicly served upload directory.
+    severity: WARNING
+    languages: [javascript]
+    pattern: |
+      multer({dest: './public/uploads/'})

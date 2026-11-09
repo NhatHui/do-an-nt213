@@ -1,0 +1,2 @@
+# Verification harness uses Python standard library only.
+# Optional: requests>=2.31.0

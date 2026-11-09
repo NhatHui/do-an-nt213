@@ -1,0 +1,182 @@
+[
+  [
+    "PHP vulnerable accepts PHP with spoofed image Content-Type",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP executes benign marker",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario content_type accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario double_ext accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario weak_strip accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario null_byte_sim accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario magic_bytes accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario exif_polyglot accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP vulnerable scenario path_traversal accepts demonstration input",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "Apache AddHandler executes double-extension benign PHP marker",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "Traversal upload escapes sub/ PHP restriction to parent uploads/",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "LFI simulator includes only a file under uploads/",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "LFI simulator rejects path outside uploads/",
+    true,
+    "HTTP 403"
+  ],
+  [
+    "Image polyglot plus restricted LFI executes appended benign PHP",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "Apache disables PHP execution inside uploads/sub/",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "PHP defense re-encodes image, removes appended marker and stores outside webroot",
+    true,
+    "HTTP 201"
+  ],
+  [
+    "PHP defense rejects PHP renamed as PNG",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "PHP defended rejects PHP",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "Node routed vulnerable endpoint stores and serves benign HTML marker",
+    true,
+    "POST 201, GET 200"
+  ],
+  [
+    "Node sharp re-encodes PNG and strips appended benign marker outside webroot",
+    true,
+    "HTTP 201"
+  ],
+  [
+    "Node defended retrieval sets download and security headers",
+    true,
+    "HTTP 200"
+  ],
+  [
+    "Node defense rejects spoofed image MIME and extension",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "Node traversal endpoint reports whether original filename escapes upload directory",
+    true,
+    "HTTP 201"
+  ],
+  [
+    "Node defended rejects oversized file",
+    true,
+    "HTTP 413"
+  ],
+  [
+    "PHP defense rejects empty image",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "PHP defense rejects truncated PNG",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "PHP defense rejects extension mismatch",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "PHP defense rejects unexpected file field",
+    true,
+    "HTTP 400"
+  ],
+  [
+    "Node defense rejects empty image",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "Node defense rejects truncated PNG",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "Node defense rejects extension mismatch",
+    true,
+    "HTTP 415"
+  ],
+  [
+    "Node defense rejects unexpected file field",
+    true,
+    "HTTP 400"
+  ],
+  [
+    "PHP defense rejects oversized upload (1048577 bytes)",
+    true,
+    "HTTP 413"
+  ],
+  [
+    "PHP defense rejects oversized upload (2097153 bytes)",
+    true,
+    "HTTP 413"
+  ],
+  [
+    "PHP defense rejects oversized upload (3145729 bytes)",
+    true,
+    "HTTP 413"
+  ],
+  [
+    "SAST detects both intentional vulnerable patterns",
+    true,
+    "Exit 0"
+  ]
+]

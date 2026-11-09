@@ -1,0 +1,13 @@
+* text=auto
+*.py text eol=lf
+*.js text eol=lf
+*.php text eol=lf
+*.ejs text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+Dockerfile text eol=lf
+# Preserve exact payload bytes across platforms.
+tests/payloads/** -text
+DEMO_MAU/0* -text

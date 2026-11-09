@@ -1,0 +1,1 @@
+{"name":"b22-ufu-node-lab","version":"1.0.0","private":true,"dependencies":{"ejs":"^3.1.10","express":"^4.21.2","file-type":"^19.6.0","multer":"^2.0.2","sharp":"^0.33.5"}}

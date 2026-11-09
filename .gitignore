@@ -1,0 +1,37 @@
+# Dependencies, caches and local environments
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Temporary output and editor files
+*.log
+*.err
+~$*
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local video / archive; keep outside source history
+/1109.mp4
+/1109.rar
+
+# Runtime uploads, not the intentional test fixtures
+/node-lab/public/uploads/*
+!/node-lab/public/uploads/.gitkeep
+/node-lab/storage_outside_webroot/*
+!/node-lab/storage_outside_webroot/.gitkeep
+/php-lab/storage_outside_webroot/*
+!/php-lab/storage_outside_webroot/.gitkeep
+/php-lab/src/uploads/*
+!/php-lab/src/uploads/.gitkeep
+!/php-lab/src/uploads/sub/
+/php-lab/src/uploads/sub/*
+!/php-lab/src/uploads/sub/.gitkeep

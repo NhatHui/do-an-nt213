@@ -1,0 +1,154 @@
+[
+  {
+    "file": "01_anh_hop_le.png",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "02_gia_anh.png",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "03_marker_vo_hai.php",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "04_hai_duoi.php.jpg",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "05_anh_kem_marker.png",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "06_anh_vuot_2MiB.png",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 413,
+    "expected": 413,
+    "result": "PASS"
+  },
+  {
+    "file": "07_du_lieu.csv",
+    "port": 18081,
+    "route": "/defended_upload.php",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "01_anh_hop_le.png",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "02_gia_anh.png",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "03_marker_vo_hai.php",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "04_hai_duoi.php.jpg",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "05_anh_kem_marker.png",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "06_anh_vuot_2MiB.png",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 413,
+    "expected": 413,
+    "result": "PASS"
+  },
+  {
+    "file": "07_du_lieu.csv",
+    "port": 18082,
+    "route": "/defended/upload",
+    "http": 415,
+    "expected": 415,
+    "result": "PASS"
+  },
+  {
+    "file": "02_gia_anh.png",
+    "port": 18082,
+    "route": "/vuln/public-upload",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "08_html_marker.html",
+    "port": 18082,
+    "route": "/vuln/public-upload",
+    "http": 201,
+    "expected": 201,
+    "result": "PASS"
+  },
+  {
+    "file": "03_marker_vo_hai.php",
+    "port": 18081,
+    "route": "/vuln_upload.php?scenario=content_type",
+    "http": 200,
+    "expected": 200,
+    "result": "PASS"
+  },
+  {
+    "file": "04_hai_duoi.php.jpg",
+    "port": 18081,
+    "route": "/vuln_upload.php?scenario=double_ext",
+    "http": 200,
+    "expected": 200,
+    "result": "PASS"
+  },
+  {
+    "file": "05_anh_kem_marker.png",
+    "port": 18081,
+    "route": "/vuln_upload.php?scenario=exif_polyglot",
+    "http": 200,
+    "expected": 200,
+    "result": "PASS"
+  }
+]

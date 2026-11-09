@@ -1,0 +1,11 @@
+services:
+  php-lab:
+    build: ./php-lab
+    ports:
+      - "127.0.0.1:18081:80"
+    restart: "no"
+  node-lab:
+    build: ./node-lab
+    ports:
+      - "127.0.0.1:18082:3000"
+    restart: "no"
